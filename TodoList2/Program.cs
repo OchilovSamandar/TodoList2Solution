@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using TodoList2.Data;
 
@@ -13,7 +14,8 @@ builder.Services.AddSwaggerGen();
 var defaultconnection = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException();
 builder.Services.AddDbContext<TodoContext>(options => options.UseSqlServer(defaultconnection));
 
-
+builder.Services.AddScoped<ITodoRepository,SqlTodoRepository>();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
 
