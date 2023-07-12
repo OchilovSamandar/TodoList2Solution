@@ -1,6 +1,21 @@
-﻿namespace TodoList2.Data
+﻿using TodoList2.Models;
+
+namespace TodoList2.Data
 {
-    public interface ITodoRepository
+    public interface ITodoRepository 
     {
+        Task CreateTodo(Todo todo);
+
+        Task UpdateTodo(Todo todo);
+
+        void DeleteTodo(Todo todo);
+
+        Task<Todo> GetTodoById(int id);
+
+        Task<IEnumerable<Todo>> GetAllTodos();
+
+        Task<bool> SaveChangesAsync();
+
+
     }
 }
