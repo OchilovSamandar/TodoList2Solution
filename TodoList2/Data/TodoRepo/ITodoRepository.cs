@@ -1,8 +1,8 @@
 ﻿using TodoList2.Models;
 
-namespace TodoList2.Data
+namespace TodoList2.Data.TodoRepo
 {
-    public interface ITodoRepository 
+    public interface ITodoRepository
     {
         Task CreateTodo(Todo todo);
 

@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using TodoList2.Dto;
+using TodoList2.Dto.TodoDtos;
 using TodoList2.Models;
 
 namespace TodoList2.Profil

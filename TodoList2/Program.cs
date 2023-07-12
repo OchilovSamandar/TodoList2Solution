@@ -1,6 +1,8 @@
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using TodoList2.Data;
+using TodoList2.Data.TodoRepo;
+using TodoList2.Data.UserRepo;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +17,7 @@ var defaultconnection = builder.Configuration.GetConnectionString("DefaultConnec
 builder.Services.AddDbContext<TodoContext>(options => options.UseSqlServer(defaultconnection));
 
 builder.Services.AddScoped<ITodoRepository,SqlTodoRepository>();
+builder.Services.AddScoped<IUserRepository,SqlUserRepository>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();

@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace TodoList2.Dto
+namespace TodoList2.Dto.TodoDtos
 {
-    public class TodoReadDto 
+    public class TodoReadDto
     {
         public int Id { get; set; }
         [Required]

@@ -21,7 +21,7 @@ namespace TodoList2.Models
         public string Password { get; set; }
 
         [Required]
-        public List<Todo> Todos { get; set; }
+        public List<Todo> Todos { get; set; } = new List<Todo>();
 
 
     }

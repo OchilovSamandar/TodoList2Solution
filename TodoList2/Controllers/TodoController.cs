@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using TodoList2.Data;
-using TodoList2.Dto;
+using TodoList2.Data.TodoRepo;
+using TodoList2.Dto.TodoDtos;
 using TodoList2.Models;
 using TodoList2.Profil;
 

@@ -1,31 +1,33 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TodoList2.Models;
 
-namespace TodoList2.Data
+namespace TodoList2.Data.TodoRepo
 {
     public class SqlTodoRepository : ITodoRepository
     {
         private readonly TodoContext _context;
 
-        public SqlTodoRepository(TodoContext context) {  _context = context; }
+        public SqlTodoRepository(TodoContext context) { _context = context; }
 
         public async Task CreateTodo(Todo todo)
         {
-            if (todo == null) { 
-                throw new ArgumentNullException(nameof(todo)); }
+            if (todo == null)
+            {
+                throw new ArgumentNullException(nameof(todo));
+            }
 
             await _context.Todos.AddAsync(todo);
-            
+
         }
 
-        public  void DeleteTodo(Todo todo)
+        public void DeleteTodo(Todo todo)
         {
-           _context.Todos.Remove(todo);
+            _context.Todos.Remove(todo);
         }
 
         public async Task<IEnumerable<Todo>> GetAllTodos()
         {
-            return  await _context.Todos.ToListAsync();
+            return await _context.Todos.ToListAsync();
 
         }
 
