@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using TodoList2.Data;
 using TodoList2.Dto;
 using TodoList2.Models;
@@ -33,8 +34,42 @@ namespace TodoList2.Controllers
             var todoReadDto = _mapper.Map<TodoReadDto>(todoModel);
 
             return Created("Todo yaratildi", todoReadDto);
+        }
 
+        [HttpGet]
+        public async Task<IActionResult> GetAllTodo()
+        {
+            var task =await _todoRepository.GetAllTodos();
 
+            return Ok(_mapper.Map<IEnumerable<TodoReadDto>>(task));
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var todoModel =await _todoRepository.GetTodoById(id);
+
+            if(todoModel == null)
+                return NotFound();
+
+            return Ok(_mapper.Map<TodoReadDto>(todoModel));
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteTodo(int id)
+        {
+            if (id == 0)
+                return BadRequest();
+
+           var todoModel= await _todoRepository.GetTodoById(id);
+
+            if(todoModel == null)
+                return NotFound();
+
+            _todoRepository.DeleteTodo(todoModel);
+            await _todoRepository.SaveChangesAsync();
+
+            return NoContent();
 
         }
 

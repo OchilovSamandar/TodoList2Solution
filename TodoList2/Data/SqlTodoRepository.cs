@@ -20,11 +20,7 @@ namespace TodoList2.Data
 
         public  void DeleteTodo(Todo todo)
         {
-            if(todo == null) {
-                throw new ArgumentNullException();
-
-                 _context.Todos.Remove(todo);
-            }
+           _context.Todos.Remove(todo);
         }
 
         public async Task<IEnumerable<Todo>> GetAllTodos()

@@ -19,10 +19,7 @@ namespace TodoList2.Models
         public DateTime CreatedDate { get; set; }
         
         public DateTime UpdatedDate { get; set;}
-        [Required]
-        public int UserId { get; set; }
-        [Required]
-        public User User { get; set; }
+        
 
     }
 }
