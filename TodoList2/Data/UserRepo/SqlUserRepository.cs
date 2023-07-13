@@ -1,4 +1,5 @@
-﻿using TodoList2.Dto.UserDtos;
+﻿using Microsoft.EntityFrameworkCore;
+using TodoList2.Dto.UserDtos;
 using TodoList2.Models;
 
 namespace TodoList2.Data.UserRepo
@@ -18,9 +19,9 @@ namespace TodoList2.Data.UserRepo
             throw new NotImplementedException();
         }
 
-        public Task<ICollection<User>> GetAllUser()
+        public async Task<IEnumerable<User>> GetAllUser()
         {
-            throw new NotImplementedException();
+            return await _context.Users.ToListAsync();
         }
 
         public Task<User> GetUserById(User user)
@@ -44,6 +45,7 @@ namespace TodoList2.Data.UserRepo
                 throw new ArgumentNullException("user");
 
                await _context.Users.AddAsync(user);
+               await _context.SaveChangesAsync();
         }
 
         public Task UpdateUser(User user)

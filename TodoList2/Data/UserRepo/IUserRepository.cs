@@ -12,7 +12,7 @@ namespace TodoList2.Data.UserRepo
 
         Task<User> GetUserByName(string username);
 
-        Task<ICollection<User>> GetAllUser();
+        Task<IEnumerable<User>> GetAllUser();
 
         Task DeleteUser(User user);
 

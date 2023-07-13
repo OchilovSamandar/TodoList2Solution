@@ -39,5 +39,13 @@ namespace TodoList2.Controllers
             return Created("Hisob yaratildi", userModel);
 
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllUsers()
+        {
+            var users = await _userRepository.GetAllUser();
+
+            return Ok(users);
+        }
     }
 }
