@@ -47,5 +47,18 @@ namespace TodoList2.Controllers
 
             return Ok(users);
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetByIdUser(int id)
+        {
+            var userModel = await _userRepository.GetUserById(id);
+            if (userModel == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(userModel);
+
+        }
     }
 }

@@ -8,7 +8,7 @@ namespace TodoList2.Data.UserRepo
 
         Task Register(User user);
 
-         Task<User> GetUserById(User user);
+         Task<User> GetUserById(int user);
 
         Task<User> GetUserByName(string username);
 

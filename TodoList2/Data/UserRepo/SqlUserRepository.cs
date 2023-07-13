@@ -24,9 +24,10 @@ namespace TodoList2.Data.UserRepo
             return await _context.Users.ToListAsync();
         }
 
-        public Task<User> GetUserById(User user)
+        public async Task<User> GetUserById(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Users.FirstOrDefaultAsync(user => user.Id == id);
+          
         }
 
         public Task<User> GetUserByName(string username)
